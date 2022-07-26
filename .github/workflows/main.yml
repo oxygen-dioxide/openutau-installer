@@ -24,20 +24,44 @@ jobs:
         file-url: https://github.com/stakira/OpenUtau/releases/download/OpenUtau-Latest/OpenUtau-win-x64.zip
         file-name: OpenUtau-win-x64.zip
         location: ${{ github.workspace }}
+        
+    - name: Download OpenUtau-win-x86.zip
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://github.com/stakira/OpenUtau/releases/download/OpenUtau-Latest/OpenUtau-win-x86.zip
+        file-name: OpenUtau-win-x86.zip
+        location: ${{ github.workspace }}
 
     - name: Extract OpenUtau-win-x64.zip
       run: 7z x -o"${{ github.workspace }}/OpenUtau-win-x64" "${{ github.workspace }}/OpenUtau-win-x64.zip"
+    
+    - name: Extract OpenUtau-win-x86.zip
+      run: 7z x -o"${{ github.workspace }}/OpenUtau-win-x86" "${{ github.workspace }}/OpenUtau-win-x86.zip"
 
-    - name: Generate script
+    - name: Generate script x64
       run: python ${{ github.workspace }}/generatescript.py ${{ github.workspace }} x64 ${{ inputs.version }}
 
-    - name: Create nsis installer
+    - name: Generate script x86
+      run: python ${{ github.workspace }}/generatescript.py ${{ github.workspace }} x86 ${{ inputs.version }}
+
+    - name: Create nsis installer x64
       uses: joncloud/makensis-action@v3.7
       with:
         script-file: ${{ github.workspace }}/x64.nsi
 
-    - name: Upload artifact
+    - name: Create nsis installer x86
+      uses: joncloud/makensis-action@v3.7
+      with:
+        script-file: ${{ github.workspace }}/x86.nsi
+        
+    - name: Upload artifact x64
       uses: actions/upload-artifact@v1.0.0
       with:
         name: OpenUTAU-Setup-x64-${{ inputs.version }}.exe
         path: ${{ github.workspace }}/OpenUTAU-Setup-x64-${{ inputs.version }}.exe
+
+    - name: Upload artifact x86
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: OpenUTAU-Setup-x86-${{ inputs.version }}.exe
+        path: ${{ github.workspace }}/OpenUTAU-Setup-x86-${{ inputs.version }}.exe
