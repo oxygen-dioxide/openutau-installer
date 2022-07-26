@@ -39,4 +39,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: ${{ github.workspace }}/OpenUTAU-Setup-x64-${{ inputs.version }}.exe
+        name: OpenUTAU-Setup-x64-${{ inputs.version }}.exe
+        path: ${{ github.workspace }}/OpenUTAU-Setup-x64-${{ inputs.version }}.exe
