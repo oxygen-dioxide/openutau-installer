@@ -215,7 +215,7 @@ Section "MainSection" SEC01
   File "OpenUtau-win-{arch}\ReachFramework.dll"
   File "OpenUtau-win-{arch}\ReactiveUI.dll"
   File "OpenUtau-win-{arch}\ReactiveUI.Fody.Helpers.dll"
-  File "OpenUtau-win-{arch}\runtime.osx.10.10-{arch}.CoreCompat.System.Drawing.dll"
+  File "OpenUtau-win-{arch}\runtime.osx.10.10-x64.CoreCompat.System.Drawing.dll"
   File "OpenUtau-win-{arch}\ScottPlot.Avalonia.dll"
   File "OpenUtau-win-{arch}\ScottPlot.dll"
   File "OpenUtau-win-{arch}\Serilog.dll"
