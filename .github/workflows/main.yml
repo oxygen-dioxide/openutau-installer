@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: '版本号'
+        description: 'Version Number'
         default: '0.0.0'
         required: true
         type: string
@@ -21,14 +21,14 @@ jobs:
     - name: Download OpenUtau-win-x64.zip
       uses: carlosperate/download-file-action@v1.0.3
       with:
-        file-url: https://github.com/stakira/OpenUtau/releases/download/OpenUtau-Latest/OpenUtau-win-x64.zip
+        file-url: https://github.com/stakira/OpenUtau/releases/download/build%2F${{ inputs.version }}/OpenUtau-win-x64.zip
         file-name: OpenUtau-win-x64.zip
         location: ${{ github.workspace }}
         
     - name: Download OpenUtau-win-x86.zip
       uses: carlosperate/download-file-action@v1.0.3
       with:
-        file-url: https://github.com/stakira/OpenUtau/releases/download/OpenUtau-Latest/OpenUtau-win-x86.zip
+        file-url: https://github.com/stakira/OpenUtau/releases/download/build%2F${{ inputs.version }}/OpenUtau-win-x86.zip
         file-name: OpenUtau-win-x86.zip
         location: ${{ github.workspace }}
 
