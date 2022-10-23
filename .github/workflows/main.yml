@@ -65,3 +65,11 @@ jobs:
       with:
         name: OpenUTAU-Setup-x86-${{ inputs.version }}.exe
         path: ${{ github.workspace }}/OpenUTAU-Setup-x86-${{ inputs.version }}.exe
+
+    - name: Create release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ inputs.version }}
+        files: |
+          OpenUTAU-Setup-x64-${{ inputs.version }}.exe
+          OpenUTAU-Setup-x86-${{ inputs.version }}.exe
